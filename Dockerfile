@@ -7,6 +7,7 @@ MAINTAINER nakanaa
 # Set correct environment variables
 ENV REFRESHED_AT 27.02.2015
 ENV HOME /root
+ENV APP /app
 WORKDIR $HOME
 
 # Install Python, pip & cURL
@@ -29,5 +30,7 @@ RUN \
   cd - && \
   # Remove downloaded files
   rm -rf *
+
+WORKDIR $APP
 
 ENTRYPOINT ["/usr/bin/fig"]
