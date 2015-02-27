@@ -12,7 +12,7 @@ WORKDIR $HOME
 # Install Python, pip & cURL
 RUN apk add --update python py-pip curl
 
-ENV COMPOSE_VERSION 1.0.1
+ENV COMPOSE_VERSION 1.1.0
 
 RUN \
   # Download Compose
@@ -30,4 +30,4 @@ RUN \
   # Remove downloaded files
   rm -rf *
 
-ENTRYPOINT ["/usr/bin/fig"]
+ENTRYPOINT ["/usr/bin/docker-compose"]
