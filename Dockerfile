@@ -10,12 +10,14 @@ ENV HOME /root
 ENV APP /app
 WORKDIR $HOME
 
-# Install Python, pip & cURL
-RUN apk add --update python py-pip curl
+# Install Python & pip
+RUN apk-install python py-pip
 
 ENV COMPOSE_VERSION 1.0.1
 
 RUN \
+  # Install cURL for downloading
+  apk-install --virtual build-dependencies curl && \
   # Download Compose
   curl -LkO https://github.com/docker/compose/archive/${COMPOSE_VERSION}.zip && \
   # Extract
@@ -29,8 +31,10 @@ RUN \
   # Change directory back
   cd - && \
   # Remove downloaded files
-  rm -rf *
+  rm -rf * && \
+  # Clean up
+  apk del build-dependencies
 
-WORKDIR $APP
+# WORKDIR $APP
 
-ENTRYPOINT ["/usr/bin/fig"]
+ENTRYPOINT ["/usr/bin/docker-compose"]
