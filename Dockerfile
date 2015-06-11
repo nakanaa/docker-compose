@@ -35,6 +35,6 @@ RUN \
   # Clean up
   apk del build-dependencies
 
-# WORKDIR $APP
+WORKDIR $APP
 
 ENTRYPOINT ["/usr/bin/docker-compose"]
