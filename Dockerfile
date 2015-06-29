@@ -5,7 +5,7 @@ FROM gliderlabs/alpine:3.1
 MAINTAINER nakanaa
 
 # Set correct environment variables
-ENV REFRESHED_AT 17.04.2015
+ENV REFRESHED_AT 29.06.2015
 ENV HOME /root
 ENV APP /app
 WORKDIR $HOME
@@ -13,7 +13,7 @@ WORKDIR $HOME
 # Install Python & pip
 RUN apk-install python py-pip
 
-ENV COMPOSE_VERSION 1.2.0
+ENV COMPOSE_VERSION 1.3.0
 
 RUN \
   # Install cURL for downloading
